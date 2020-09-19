@@ -27,7 +27,7 @@ def main():
         isiteks.append(baris.get_text())
 
     for baris in page:
-        hal.append(re.findall('\d+',baris.get_text())[0])
+        hal.append(re.sub(',','',re.search('((=?\d{1,3},)*\d{1,3})', baris.get_text()).group(0)))
     
     for baris in note:
         isinotes.append(baris.get_text())
