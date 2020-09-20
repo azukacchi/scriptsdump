@@ -36,9 +36,19 @@ def main():
 
     tabel = {'Title':title, 'Author':author, 'Status':'Finished', 'Progress':'', 'Book type':'', 'Highlight':'','Year':date}
     df = pd.DataFrame(tabel)
-    df['Year'] = pd.to_datetime(df['Year'], format="%b %d, %Y").dt.strftime('%m/%d/%y')
+    date2 = []
+    for row in df.Year:
+        print(row)
+        try: row = datetime.strptime(row, "%b %d, %Y").strftime('%m/%d/%y')
+        except:
+            try: row = datetime.strptime(row, "%b %Y").strftime('%m/01/%y')
+            except: row = '0'
+        date2.append(row)
+    df['Year'] = date2
 
     csv_path = os.path.join(BASE_DIR, 'Goodreads.csv')
+    if os.path.exists(csv_path):
+        os.remove(csv_path)
     df.to_csv(csv_path, index=False)
     
     print('fin')
