@@ -17,3 +17,6 @@ Scrape book list field according to [Notion Reading List page](https://www.notio
 
 ### otptags
 I'd like to see how my *rare* otp is growing (or if it's growing at all, lol). Scrape the total works count in your favorite otp tags on AO3 with the number of works for each age rating.
+
+### historywordcount
+Count the number of AO3 fics you've read with the total word count. "Viewing History" should be enabled first (My Preferences >> Misc >> Turn on Viewing History).
