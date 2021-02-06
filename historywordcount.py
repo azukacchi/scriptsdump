@@ -52,12 +52,13 @@ def main():
         if len(next_page_btn) < 1:
             break
         else:
-            # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, 'Next'))).click()
             time.sleep(delay)
+            next_page_btn = driver.find_element_by_xpath("//a[@rel='next']")
             WebDriverWait(driver, 2).until(lambda driver : next_page_btn.is_displayed())
             next_page_btn.click()
     
     print(f'Based on your History, you have read total of {sum(totalfics)} fics and {sum(totalwords)} words.')
+    time.sleep(10)
 
 def countwords(driver):
     soup = BeautifulSoup(driver.page_source, 'html.parser')
