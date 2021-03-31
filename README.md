@@ -30,3 +30,6 @@ I'd like to see how my *rare* otp is growing (or if it's growing at all, lol). S
 
 ### historywordcount
 Count the number of AO3 fics you've read with the total word count. "Viewing History" should be enabled first (My Preferences >> Misc >> Turn on Viewing History).
+```
+python historywordcount.py "AO3 username" "AO3 password" "path to Selenium driver"
+```
