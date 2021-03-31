@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import argparse
 
 delay = 6
 
@@ -14,13 +15,13 @@ def main():
     options.headless = True
     options.add_argument("--window-size=1920,1200")
 
-    DRIVER_PATH = "" # path to chromedriver.exe
+    DRIVER_PATH = args.driver # path to chromedriver.exe
     driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
     driver.get("https://archiveofourown.org/users/login")
 
 
-    USERNAME = '' # your ao3 username
-    PASSWORD = '' # your ao3 password
+    USERNAME = args.uname # your ao3 username
+    PASSWORD = args.pw # your ao3 password
 
     # driver.refresh()
     time.sleep(delay)
@@ -58,7 +59,8 @@ def main():
             next_page_btn.click()
     
     print(f'Based on your History, you have read total of {sum(totalfics)} fics and {sum(totalwords)} words.')
-    time.sleep(10)
+    
+    return
 
 def countwords(driver):
     soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -66,4 +68,17 @@ def countwords(driver):
     return sum(words), len(words)
 
 if __name__ == '__main__':
+    my_parser = argparse.ArgumentParser()
+
+    my_parser.add_argument('uname',
+                           action='store',
+                           help='AO3 username')
+    my_parser.add_argument('pw',
+                           action='store',
+                           help='AO3 password')
+    my_parser.add_argument('driver',
+                           action='store',
+                           help='path to Selenium driver')
+    
+    args = my_parser.parse_args()
     main()
