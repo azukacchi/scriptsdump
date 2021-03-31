@@ -15,6 +15,13 @@ Export highlights of a book from [Kindle](https://read.amazon.com/notebook) to c
 ### read-goodreads
 Scrape book list field according to [Notion Reading List page](https://www.notion.so/azukacchi/Reading-List-35ae3495610e4721a6d331cbda063c18). HTML source code should be saved in `txt`. Import the csv file to Notion then drag to merge with the existing table. Note: somehow "Merge with CSV" option doesn't work, so the csv file should be imported then moved to the page. Example of Goodreads read book page [here](https://www.goodreads.com/review/list/4240208-azka-nur-afifah?ref=nav_mybooks&sort=date_read).
 
+### goodreads-scraper
+Navigate and scrape Goodreads book list field according to [Notion Reading List page](https://www.notion.so/azukacchi/Reading-List-35ae3495610e4721a6d331cbda063c18) using Selenium.
+```
+python goodreads-scraper.py "Goodreads username/email" "Goodreads password" "path to Selenium driver" -filename "filename"
+```
+Book list is saved in csv file. Import the csv file to Notion then drag to merge with the existing table. Note: somehow "Merge with CSV" option doesn't work, so the csv file should be imported then moved to the page. Example of Goodreads read book page [here](https://www.goodreads.com/review/list/4240208-azka-nur-afifah?ref=nav_mybooks&sort=date_read).
+
 ### otptags
 I'd like to see how my *rare* otp is growing (or if it's growing at all, lol). Scrape the total works count in your favorite otp tags on AO3 with the number of works for each age rating.
 
