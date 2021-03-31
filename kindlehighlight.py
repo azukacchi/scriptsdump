@@ -7,7 +7,7 @@ import os.path
 def main():
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    filepath = input('txt file: ')
+    filepath = args.filepath
     html_path = os.path.join(BASE_DIR, filepath)
     
 
@@ -43,4 +43,11 @@ def main():
     return
 
 if __name__ == '__main__':
+    my_parser = argparse.ArgumentParser()
+
+    my_parser.add_argument('filepath',
+                           action='store',
+                           help='path to HTML source code in txt')
+    
+    args = my_parser.parse_args()
     main()
